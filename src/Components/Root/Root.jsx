@@ -1,9 +1,13 @@
 import Header from "../Header/Header";
-import { Outlet } from "react-router";
+import { Outlet, useNavigation } from "react-router";
 import Footer from "../Footer/Footer";
 import './root.css';
 
 const Root = () => {
+
+    const navigation = useNavigation();
+    const isNavigating = Boolean(navigation.location);
+
   return (
     <div>
       <Header></Header>
@@ -15,6 +19,7 @@ const Root = () => {
           <p>Nav item -4</p>
           <p>Nav item -5</p>
         </aside>
+        {isNavigating && <span>Loading........</span>}
         <Outlet></Outlet>
       </div>
       <Footer></Footer>

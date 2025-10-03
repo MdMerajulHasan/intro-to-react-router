@@ -45,16 +45,25 @@ const router = createBrowserRouter([
         element: <UserDetails></UserDetails>,
       },
       {
-        path: 'posts',
-        loader: ()=>fetch('https://jsonplaceholder.typicode.com/posts'),
-        element: <Posts></Posts>
+        path: "posts",
+        loader: () => fetch("https://jsonplaceholder.typicode.com/posts"),
+        element: <Posts></Posts>,
       },
       {
-        path: 'posts/:postId',
-        loader: ({params})=>fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
+        path: "posts/:postId",
+        loader: ({ params }) =>
+          fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`),
         Component: PostDetails,
-      }
+      },
     ],
+  },
+  {
+    path: "*",
+    element: (
+      <div className="my-44 text-4xl flex justify-center items-center font-bold text-red-700">
+        Not found!: status 404
+      </div>
+    ),
   },
 ]);
 
